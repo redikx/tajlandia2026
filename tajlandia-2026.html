@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baśniowa Tajlandia 2026 — Plan wyprawy rodzinnej</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --jade-900:#0c2e2a;
+    --jade-800:#103e38;
+    --jade-700:#155349;
+    --jade-600:#1d6b5d;
+    --gold:#e7b53c;
+    --gold-soft:#f2cf73;
+    --coral:#e8553a;
+    --coral-deep:#c8412c;
+    --paper:#f7f2e9;
+    --paper-2:#efe7d8;
+    --ink:#19211f;
+    --ink-soft:#4a534f;
+    --line:#d9cfbd;
+    --card:#fffdf8;
+    --shadow:0 1px 2px rgba(12,46,42,.06),0 12px 30px -18px rgba(12,46,42,.45);
+    --radius:18px;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --disp:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--body);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+
+  /* ---------- COVER ---------- */
+  .cover{position:relative;min-height:92vh;display:flex;align-items:flex-end;
+    color:#fff;overflow:hidden;background:var(--jade-900)}
+  .cover__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    filter:saturate(1.05);opacity:.9}
+  .cover__veil{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,38,34,.35) 0%,rgba(10,38,34,.25) 40%,rgba(10,30,27,.92) 100%)}
+  .cover__inner{position:relative;width:100%;max-width:1060px;margin:0 auto;
+    padding:0 20px 56px}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px;
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+  .cover h1{font-family:var(--disp);font-weight:700;letter-spacing:-.02em;
+    line-height:.96;margin:0;font-size:clamp(46px,9vw,104px)}
+  .cover h1 em{font-style:normal;display:block;
+    background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 55%,#fff5dc 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .cover__sub{margin:20px 0 0;font-size:clamp(16px,2.2vw,20px);max-width:46ch;
+    color:rgba(255,255,255,.86)}
+  .ticket{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+  .ticket .chip{font-family:var(--mono);font-size:12px;letter-spacing:.05em;
+    background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);
+    padding:9px 13px;border-radius:999px;backdrop-filter:blur(6px);
+    display:flex;gap:8px;align-items:center}
+  .ticket .chip b{color:var(--gold-soft);font-weight:700}
+  .scrollcue{position:absolute;right:20px;bottom:26px;font-family:var(--mono);
+    font-size:11px;letter-spacing:.25em;color:rgba(255,255,255,.7);
+    writing-mode:vertical-rl;text-transform:uppercase}
+
+  /* ---------- ROUTE STRIP ---------- */
+  .route{background:var(--jade-900);color:#fff;padding:34px 0;border-top:1px solid rgba(255,255,255,.08)}
+  .route h2{font-family:var(--mono);font-size:12px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--gold-soft);margin:0 0 18px;font-weight:500}
+  .route__line{display:flex;flex-wrap:wrap;gap:8px 4px;align-items:center}
+  .stop{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+    padding:6px 11px;border-radius:8px;white-space:nowrap}
+  .stop.key{background:var(--gold);color:var(--jade-900);border-color:var(--gold);font-weight:700}
+  .arr{color:rgba(231,181,60,.65);font-family:var(--mono);font-size:13px}
+
+  /* ---------- STICKY NAV ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(247,242,233,.92);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav__inner{display:flex;align-items:center;gap:14px;padding:11px 20px;
+    max-width:1060px;margin:0 auto;flex-wrap:wrap}
+  .nav__brand{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:-.01em;
+    color:var(--jade-800);margin-right:2px;white-space:nowrap}
+  .filters{display:flex;gap:7px;flex-wrap:wrap;flex:1}
+  .filt{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;cursor:pointer;
+    border:1px solid var(--line);background:var(--card);color:var(--ink-soft);
+    padding:7px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;
+    transition:all .15s ease;text-transform:uppercase}
+  .filt:hover{border-color:var(--jade-600);color:var(--jade-700)}
+  .filt[aria-pressed="true"]{background:var(--jade-800);color:#fff;border-color:var(--jade-800)}
+  .filt[aria-pressed="true"] svg{stroke:var(--gold-soft)}
+  .filt svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.7}
+  .filt.all[aria-pressed="true"]{background:var(--gold);color:var(--jade-900);border-color:var(--gold)}
+  .daysel{font-family:var(--mono);font-size:12px;border:1px solid var(--line);
+    border-radius:8px;padding:7px 8px;background:var(--card);color:var(--ink);cursor:pointer}
+  .filter-note{font-family:var(--mono);font-size:11px;color:var(--ink-soft);
+    width:100%;margin-top:2px;display:none}
+  .filter-note.on{display:block}
+
+  /* ---------- DAYS ---------- */
+  main{padding:42px 0 10px}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;margin-bottom:30px;scroll-margin-top:80px}
+  .day.hide{display:none}
+  .day__media{position:relative;aspect-ratio:21/9;background:var(--paper-2);overflow:hidden}
+  .day__media img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+  .day:hover .day__media img{transform:scale(1.035)}
+  .day__media::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(12,46,42,0) 35%,rgba(12,46,42,.82) 100%)}
+  .day__tag{position:absolute;left:16px;top:16px;z-index:2;font-family:var(--mono);
+    font-size:11.5px;letter-spacing:.12em;color:var(--jade-900);background:var(--gold);
+    padding:6px 12px;border-radius:8px;font-weight:700}
+  .day__loc{position:absolute;left:16px;bottom:14px;right:16px;z-index:2;
+    display:flex;gap:7px;flex-wrap:wrap;align-items:flex-end}
+  .pin{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:#fff;
+    background:rgba(8,30,27,.55);border:1px solid rgba(255,255,255,.28);
+    padding:5px 10px;border-radius:7px;backdrop-filter:blur(4px)}
+  .day__body{padding:24px 26px 28px}
+  .day__head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;
+    flex-wrap:wrap;margin-bottom:6px}
+  .day__title{font-family:var(--disp);font-weight:700;font-size:clamp(22px,3.4vw,30px);
+    letter-spacing:-.015em;line-height:1.1;margin:0;color:var(--jade-800);max-width:24ch}
+  .free{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    padding:6px 11px;border-radius:999px;white-space:nowrap;border:1px solid;display:inline-flex;gap:7px;align-items:center}
+  .free::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .free.pelny{color:#1d7a4f;border-color:#bfe3cf;background:#eef8f1}
+  .free.czesc{color:#a9701a;border-color:#ecd9ad;background:#faf2df}
+  .free.brak{color:#9a4a3a;border-color:#ecc8be;background:#fbeee9}
+  .teaser{font-size:15.5px;color:var(--ink-soft);margin:8px 0 18px;max-width:68ch}
+
+  .transit{font-family:var(--mono);font-size:12.5px;color:var(--jade-700);
+    background:var(--paper);border:1px dashed var(--line);border-radius:12px;
+    padding:13px 15px;margin-bottom:18px;line-height:1.85}
+  .transit b{color:var(--coral-deep)}
+  .program{margin:0 0 20px;font-size:15.5px}
+  .program strong{color:var(--jade-800)}
+
+  .secs{display:grid;gap:12px}
+  .sec--backup{background:#ecf5f1;border:1px solid #cfe6dd;border-radius:12px;padding:12px 14px}
+  .sec--backup .sec__h{color:#0c6b58;margin-bottom:7px} .sec--backup .sec__h svg{stroke:#13957c}
+  .backup-text{font-size:14px;line-height:1.6;color:var(--ink);margin:0}
+  .backup-text a.lnk{color:#0c6b58}
+  .sec{border:1px solid var(--line);border-radius:13px;padding:14px 16px;background:#fff;
+    transition:box-shadow .15s ease,border-color .15s ease}
+  .sec.hide{display:none}
+  .sec__h{display:flex;align-items:center;gap:9px;font-family:var(--mono);
+    font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px;font-weight:700}
+  .sec__h svg{width:17px;height:17px;fill:none;stroke-width:1.7}
+  .sec--see .sec__h{color:var(--jade-700)} .sec--see .sec__h svg{stroke:var(--jade-600)}
+  .sec--food .sec__h{color:#b06a12} .sec--food .sec__h svg{stroke:#cf8a23}
+  .sec--t19 .sec__h{color:var(--coral-deep)} .sec--t19 .sec__h svg{stroke:var(--coral)}
+  .sec--muay .sec__h{color:#7a3b8c} .sec--muay .sec__h svg{stroke:#8e4aa1}
+  .sec--dinner .sec__h{color:#9c4a1e} .sec--dinner .sec__h svg{stroke:#c2622a}
+  .sec ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  .sec li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.5}
+  .sec li::before{content:"";flex:0 0 6px;width:6px;height:6px;border-radius:50%;
+    margin-top:8px;background:var(--line)}
+  .sec--see li::before{background:var(--jade-600)}
+  .sec--food li::before{background:#cf8a23}
+  .sec--t19 li::before{background:var(--coral)}
+  .sec--muay li::before{background:#8e4aa1}
+  .sec--dinner li::before{background:#c2622a}
+  .dlabel{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;
+    background:#f3e6d4;color:#8a4a1c;padding:2px 8px;border-radius:6px;margin-right:5px;white-space:nowrap}
+  .sec a.lnk{color:var(--jade-700);text-decoration:none;border-bottom:1.5px solid var(--line);
+    font-weight:600;transition:border-color .15s}
+  .sec a.lnk:hover{border-color:var(--jade-600)}
+  .sec .note{color:var(--ink-soft)}
+  .opt{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:#fff;
+    background:var(--coral);padding:2px 7px;border-radius:5px;margin-left:6px;
+    text-transform:uppercase;white-space:nowrap;vertical-align:middle}
+  .price{font-family:var(--mono);font-size:11px;color:var(--ink-soft);white-space:nowrap}
+
+  /* ---------- EMIRATES PANEL ---------- */
+  .ek{padding:6px 0 2px}
+  .ek__grid{background:var(--jade-800);color:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+    display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);overflow:hidden}
+  .ek__media{margin:0;position:relative;min-height:250px}
+  .ek__media img{width:100%;height:100%;object-fit:cover;display:block}
+  .ek__media figcaption{position:absolute;left:0;right:0;bottom:0;font-family:var(--mono);font-size:10px;
+    letter-spacing:.04em;color:rgba(255,255,255,.85);padding:10px 12px;
+    background:linear-gradient(transparent,rgba(0,0,0,.6))}
+  .ek__body{padding:26px 28px}
+  .ek__tag{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--gold-soft);text-transform:uppercase}
+  .ek__body h2{font-family:var(--disp);font-size:23px;margin:9px 0 8px;color:#fff;line-height:1.15}
+  .ek__lead{font-size:14px;color:rgba(255,255,255,.85);line-height:1.55;margin:0 0 14px}
+  .ek__list{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  .ek__list li{font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.9);padding-left:18px;position:relative}
+  .ek__list li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:var(--gold-soft)}
+  .ek__list b{color:#fff}
+  .ek__tip{margin-top:16px;font-size:13px;line-height:1.55;color:#fff;
+    background:rgba(231,181,60,.12);border:1px solid rgba(231,181,60,.32);border-radius:10px;padding:11px 13px}
+  @media(max-width:760px){.ek__grid{grid-template-columns:1fr}.ek__media{min-height:200px}}
+
+  /* ---------- PATTAYA PLAYBOOK ---------- */
+  .pat{margin:30px 0 8px}
+  .pat__tag{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral)}
+  .pat__head h2{font-family:var(--disp);font-size:24px;margin:8px 0 6px;color:var(--jade-900)}
+  .pat__lead{font-size:14px;color:var(--ink-soft);line-height:1.55;margin:0;max-width:780px}
+  .pat__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;margin-top:18px}
+  .pat__cat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+  .pat__cat h3{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--jade-700);margin:0 0 11px}
+  .pat__cat h3 svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .pat__cat ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .pat__cat li{font-size:13.5px;line-height:1.5;color:var(--ink);padding-left:14px;position:relative}
+  .pat__cat li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--coral)}
+  .pat__cat .note{color:var(--ink-soft)}
+  .pat__cat .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;color:var(--jade-600);white-space:nowrap}
+
+  footer{text-align:center;padding:36px 20px 56px;color:var(--ink-soft);font-size:13px}
+  footer .mono{font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--jade-700)}
+
+  :focus-visible{outline:2.5px solid var(--coral);outline-offset:2px;border-radius:4px}
+
+  @media (max-width:620px){
+    .day__media{aspect-ratio:16/10}
+    .day__body{padding:20px 18px 22px}
+    .nav__brand{display:none}
+    .cover__inner{padding-bottom:42px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .day:hover .day__media img{transform:none}
+    *{transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <img class="cover__img" alt="Biała Świątynia w Chiang Rai" src="">
+  <div class="cover__veil"></div>
+  <div class="cover__inner">
+    <div class="eyebrow">Rainbow Tours · Rez. 8787523 · Lato 2026</div>
+    <h1>Baśniowa<br><em>Tajlandia</em></h1>
+    <p class="cover__sub">Rodzinna wyprawa dzień po dniu — od złotych świątyń Bangkoku, przez dżunglę i ruiny dawnych stolic, po plaże Pattaya. Co zwiedzamy, gdzie jemy i co warto złapać po drodze.</p>
+    <div class="ticket">
+      <span class="chip">11–25 <b>LIP 2026</b></span>
+      <span class="chip"><b>15</b> DNI</span>
+      <span class="chip"><b>4</b> OSOBY</span>
+      <span class="chip">WAW ✈ BKK · <b>EMIRATES</b></span>
+      <span class="chip">RADEK · BEATA · ROKSANA · MAKS</span>
+    </div>
+  </div>
+  <div class="scrollcue">przewiń ↓</div>
+</header>
+
+<section class="route">
+  <div class="wrap">
+    <h2>Trasa wyprawy</h2>
+    <div class="route__line" id="route"></div>
+  </div>
+</section>
+
+<section class="ek">
+  <div class="wrap">
+   <div class="ek__grid">
+    <figure class="ek__media">
+      <img loading="lazy" alt="Kabina klasy ekonomicznej Emirates A380" src="https://commons.wikimedia.org/wiki/Special:FilePath/Emirates%20economy%20class%20cabin%20A380.jpg?width=1280">
+      <figcaption>Kabina ekonomiczna Emirates A380 · fot. Wikimedia Commons</figcaption>
+    </figure>
+    <div class="ek__body">
+      <span class="ek__tag">Lot · Emirates · klasa ekonomiczna</span>
+      <h2>Czego się spodziewać na pokładzie</h2>
+      <p class="ek__lead">Ekonomia, ale w lepszym wydaniu niż większość linii — pełne posiłki, mocna rozrywka i hojny bagaż w cenie. Konkrety na cztery odcinki (WAW↔DXB↔BKK):</p>
+      <ul class="ek__list">
+        <li><b>Samolot.</b> Na trasie Dubaj–Bangkok (tam i z powrotem) zwykle lata A380 — najcichsza kabina, fotele 3-4-3, odrobinę szersze niż w Boeingu. Warszawa–Dubaj to najczęściej Boeing 777 (też 3-4-3, gęściej). Emirates miesza flotę, więc typ maszyny potwierdźcie pod swoją datę na emirates.com.</li>
+        <li><b>Fotel.</b> Rozstaw ~32 cale (≈81 cm), szerokość ~18 cali. Na długich, nocnych odcinkach koc i poduszka; kosmetyczka (amenity kit) zwykle tylko na dłuższych lotach.</li>
+        <li><b>Ekran i rozrywka — ICE.</b> Nawet ~6 500 kanałów (filmy, seriale, muzyka, gry, 150+ kanałów dla dzieci), osobisty ekran w zagłówku, w nowszych maszynach 13,3″ i Bluetooth (podłączycie własne słuchawki). USB i gniazdko przy fotelu, mapa lotu Airshow.</li>
+        <li><b>Jedzenie.</b> Wieloskładnikowe, regionalne posiłki i napoje (z alkoholem) w cenie. Posiłki specjalne — dla dzieci, wege, bez glutenu, halal — zamawiacie min. 24 h przed wylotem na emirates.com.</li>
+        <li><b>Bagaż.</b> 30 kg rejestrowanego (zgodnie z biletem) + 1 szt. podręcznego do 7 kg (55×38×22 cm). Emirates rygorystycznie waży podręczny — laptop i torebka też wliczają się do 7 kg.</li>
+        <li><b>Wi-Fi.</b> Darmowe wiadomości (WhatsApp/iMessage) dla członków Skywards (konto zakładacie za darmo). Emirates wdraża darmowy Starlink (777 od końca 2025, A380 od lutego 2026) — może być na Waszej maszynie; jeśli nie, pełny internet od ok. 2,99 USD.</li>
+      </ul>
+      <div class="ek__tip"><b>Dla Roksany i Maksa (19):</b> w aplikacji Emirates ułóżcie playlistę filmów przed lotem, w ICE są też gry, a własne słuchawki Bluetooth dadzą lepszy dźwięk niż pokładowe. Power bank do ręki — przyda się przy bramkach i na 4-godzinnej przesiadce w Dubaju.</div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <span class="nav__brand">Tajlandia ’26</span>
+    <div class="filters" id="filters">
+      <button class="filt all" data-f="all" aria-pressed="true">Pełny plan</button>
+      <button class="filt" data-f="backup" aria-pressed="false">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M5.6 5.6l3.2 3.2M15.2 15.2l3.2 3.2M18.4 5.6l-3.2 3.2M8.8 15.2l-3.2 3.2"/></svg>Koło ratunkowe</button>
+      <button class="filt" data-f="see" aria-pressed="false">
+        <svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>Must See</button>
+      <button class="filt" data-f="food" aria-pressed="false">
+        <svg viewBox="0 0 24 24"><path d="M3 11h18a8 8 0 0 1-16 0z"/><path d="M7 11V8M12 11V7M17 11V8"/><path d="M4 20h16"/></svg>Street Food</button>
+      <button class="filt" data-f="dinner" aria-pressed="false">
+        <svg viewBox="0 0 24 24"><path d="M6 3v8a2 2 0 0 0 2 2M8 3v18M6 3v4M10 3v4M16 3c-1.5 0-2.5 2-2.5 4.5S15 12 16 12v9"/></svg>Kolacja</button>
+      <button class="filt" data-f="t19" aria-pressed="false">
+        <svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>Must 19</button>
+      <button class="filt" data-f="muay" aria-pressed="false">
+        <svg viewBox="0 0 24 24"><path d="M5 11V8a3 3 0 0 1 6 0M11 11V6a2 2 0 0 1 4 0v5"/><path d="M15 9a2 2 0 0 1 4 0v5a7 7 0 0 1-7 7H9a6 6 0 0 1-6-6v-2a2 2 0 0 1 4 0"/></svg>Muay Thai</button>
+    </div>
+    <select class="daysel" id="daysel" aria-label="Przejdź do dnia"></select>
+    <div class="filter-note" id="fnote"></div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" id="days"></div>
+
+  <section class="pat">
+    <div class="wrap">
+      <div class="pat__head">
+        <span class="pat__tag">Pattaya · dni 12–14 · 3 dni luzu</span>
+        <h2>Co warto zobaczyć i zrobić</h2>
+        <p class="pat__lead">Trzy dni to sporo czasu — poza fakultetami biura (Koh Lan, Alcazar) zostaje miejsce na własne wypady. Wybór według klimatu, z linkami do map:</p>
+      </div>
+      <div class="pat__grid">
+
+        <div class="pat__cat">
+          <h3><svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>Kultura i widoki</h3>
+          <ul>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Sanctuary%20of%20Truth%20Pattaya" target="_blank" rel="noopener">Sanctuary of Truth</a> <span class="note">— 105-metrowa drewniana świątynia bez gwoździ, wciąż w budowie; pokaz kulturalny ok. 16:00, najpiękniej w późne popołudnie.</span> <span class="tag">08–18 · ~500 THB</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Big%20Buddha%20Wat%20Phra%20Yai%20Pattaya" target="_blank" rel="noopener">Big Buddha (Wat Phra Yai)</a> <span class="note">— wzgórze Pratumnak, schody strzeżone przez nagi, panorama zatoki.</span> <span class="tag">darmowy</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Pattaya%20Viewpoint%20Khao%20Phra%20Tamnak" target="_blank" rel="noopener">Pattaya Viewpoint</a> <span class="note">— najlepszy widok na miasto i Koh Larn; przyjdźcie wcześnie albo o zachodzie (bywa tłoczno).</span> <span class="tag">24/7 · darmowy</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Khao%20Chi%20Chan%20Buddha%20Mountain" target="_blank" rel="noopener">Khao Chi Chan (Góra Buddy)</a> <span class="note">— gigantyczny Budda wyryty laserem w skale + pole słoneczników; po drodze do Nong Nooch.</span> <span class="tag">06–18 · darmowy</span></li>
+          </ul>
+        </div>
+
+        <div class="pat__cat">
+          <h3><svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>Natura i ogrody</h3>
+          <ul>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Nong%20Nooch%20Tropical%20Garden%20Pattaya" target="_blank" rel="noopener">Nong Nooch Tropical Garden</a> <span class="note">— 200+ ha tematycznych ogrodów (francuski, kaktusowy, Stonehenge) plus pokazy słoni i kultury; spokojnie pół dnia.</span> <span class="tag">08–18 · ~600 THB</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Pattaya%20Floating%20Market" target="_blank" rel="noopener">Pattaya Floating Market</a> <span class="note">— pływający targ: łodzie, street food, rękodzieło i pokaz tańca.</span> <span class="tag">~200 THB</span></li>
+          </ul>
+        </div>
+
+        <div class="pat__cat">
+          <h3><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>Adrenalina i atrakcje (dla bliźniaków)</h3>
+          <ul>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Ramayana%20Water%20Park%20Pattaya" target="_blank" rel="noopener">Ramayana Water Park</a> <span class="note">— największy park wodny w Tajlandii, 20+ zjeżdżalni i 600-metrowa leniwa rzeka; obok Nong Nooch. Cały dzień frajdy.</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Art%20in%20Paradise%20Pattaya" target="_blank" rel="noopener">Art in Paradise</a> <span class="note">— interaktywne muzeum iluzji 3D, mnóstwo miejsc na zdjęcia (jest też appka AR).</span> <span class="tag">09–21 · ~400 THB</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Pattaya%20Kart%20Speedway" target="_blank" rel="noopener">Go-kart: Pattaya Kart Speedway</a> <span class="note">— jeden z większych torów w kraju; szybka dawka adrenaliny.</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Max%20Muay%20Thai%20Stadium%20Pattaya" target="_blank" rel="noopener">Max Muay Thai Stadium</a> <span class="note">— wieczorne walki z międzynarodową obsadą (więcej w sekcji Muay Thai dnia 12–14).</span></li>
+          </ul>
+        </div>
+
+        <div class="pat__cat">
+          <h3><svg viewBox="0 0 24 24"><path d="M2 6c1.5 1.5 3 1.5 4.5 0S9 4.5 10.5 6 13.5 7.5 15 6s3-1.5 4.5 0M2 12c1.5 1.5 3 1.5 4.5 0s3-1.5 4.5 0 3 1.5 4.5 0 3-1.5 4.5 0M2 18c1.5 1.5 3 1.5 4.5 0s3-1.5 4.5 0 3 1.5 4.5 0 3-1.5 4.5 0"/></svg>Plaże i wyspy</h3>
+          <ul>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Koh%20Larn%20Coral%20Island%20Pattaya" target="_blank" rel="noopener">Koh Larn (Wyspa Koralowa)</a> <span class="note">— najładniejsze plaże w okolicy; prom z Bali Hai ~30 THB / ~40 min (Tawaen tłoczna, Ta Yai spokojna). To także fakultet biura.</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Jomtien%20Beach%20Pattaya" target="_blank" rel="noopener">Jomtien Beach</a> <span class="note">— spokojniejsza i czystsza niż Beach Road; leżaki i sporty wodne.</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Wong%20Amat%20Beach%20Naklua%20Pattaya" target="_blank" rel="noopener">Wong Amat / Naklua</a> <span class="note">— cicha plaża blisko Sanctuary i najlepszego seafood (Mum Aroi).</span></li>
+          </ul>
+        </div>
+
+        <div class="pat__cat">
+          <h3><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>Wieczory i zakupy</h3>
+          <ul>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Walking%20Street%20Pattaya" target="_blank" rel="noopener">Walking Street</a> <span class="note">— kultowy neonowy pas barów i klubów; raz warto zobaczyć tę energię (typowy night-life, rozkręca się po 21:00).</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Alcazar%20Cabaret%20Show%20Pattaya" target="_blank" rel="noopener">Alcazar / Tiffany's Cabaret</a> <span class="note">— spektakularne rewie taneczne (Alcazar to też fakultet biura).</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Terminal%2021%20Pattaya" target="_blank" rel="noopener">Terminal 21 / CentralFestival</a> <span class="note">— klimatyzowane galerie z jedzeniem i widokiem na morze (T21 to także Wasze „koło ratunkowe” na upał).</span></li>
+            <li><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Jomtien%20Night%20Market%20Pattaya" target="_blank" rel="noopener">Pattaya / Jomtien Night Market</a> <span class="note">— jedzenie i pamiątki na wieczór bez planu.</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="mono">Plan na podstawie programu Rainbow Tours · Rez. 8787523</div>
+  <p style="margin-top:10px">Zdjęcia: Wikimedia Commons (licencje CC). Linki prowadzą do Map Google.<br>Sekcje <b>Must See · Street Food · Kolacja · Must 19 · Muay Thai</b> to nasze dodatki do programu biura.</p>
+</footer>
+
+<script>
+const IMG = f => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(f)}?width=1280`;
+const MAP = q => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+
+// set cover image
+document.querySelector('.cover__img').src = IMG('Wat Rong Khun - Chiang Rai.jpg');
+
+const ROUTE = ["Warszawa","Dubaj","Bangkok","Kanchanaburi","Ayutthaya","Phitsanulok","Chiang Rai","Chiang Mai","Pociąg nocny","Pattaya","Warszawa"];
+const KEY = new Set(["Bangkok","Chiang Mai","Pattaya"]);
+
+const DAYS = [
+{
+  n:"01", date:"11.07", dow:"Sob", img:"Burj Khalifa Night View 01.jpg",
+  backup:"<b>Koło ratunkowe:</b> nuda na 4-godzinnej przesiadce w Dubaju? W <a class='lnk' href='"+MAP("Dubai International Airport Terminal 3")+"' target='_blank' rel='noopener'>Terminalu 3</a> są strefy ciszy i mini-ogród Zen, kąciki z grami oraz okna z widokiem na płytę — idealne, by rozprostować nogi przed kolejnym lotem.",
+  title:"Lot do Dubaju", loc:["WAW Warszawa","DXB Dubaj"], free:["czesc","Tranzyt"],
+  teaser:"Start wyprawy! Szerokokadłubowy Emirates i lądowanie w rozświetlonym nocą Dubaju.",
+  transit:"<b>15:10</b> wylot WAW lotem <b>EK180</b> · bagaż 30 kg + 7 kg podręczny · czas lotu 5 h 45.<br><b>23:45</b> lądowanie DXB · przesiadka 4 h 05 (zmiana terminalu, aktywacja QR z TDAC).",
+  program:"Dzień przelotowy. Cała czwórka pod stanowiskiem Emirates równo o 12:10, żeby siedzieć razem (miejsca przydzielane przy odprawie).",
+  see:[], food:[],
+  t19:[{t:"Strefa gamingowa <a class='lnk' href='"+MAP("Game Space Dubai Airport Terminal 3")+"' target='_blank' rel='noopener'>Game Space</a> w Terminalu 3 (przy bramce B27) — konsole najnowszej generacji, darmowo. Idealne na zabicie 4 h przesiadki."}],
+  muay:[]
+},
+{
+  n:"02", date:"12.07", dow:"Niedz", img:"Panorama of Chao Phraya River from Iconsiam at night, Bangkok.jpg",
+  backup:"<b>Koło ratunkowe:</b> pierwsze popołudnie bez planu? Tajski masaż stóp przy hotelu (200–300 THB/h) to najlepszy reset po nocnym locie, a wieczorny spacer do najbliższego 7-Eleven załatwia zimną wodę i pierwsze przekąski.",
+  title:"Lądowanie w Bangkoku i aklimatyzacja", loc:["BKK Suvarnabhumi","Bangkok"], free:["pelny","Popołudnie wolne"],
+  teaser:"Reset w tropikach: basen, rozpakowanie i łagodne wejście w nową strefę czasową.",
+  transit:"<b>03:50</b> wylot DXB lotem <b>EK376</b> · czas lotu 6 h 40.<br><b>13:30</b> lądowanie Suvarnabhumi (BKK) · kontrola paszportowa (pieczątka do 60 dni) · transfer autokarem do hotelu.",
+  program:"Po południu odpoczynek przy hotelowym basenie — bez programu, regeneracja po nocnej podróży.",
+  see:[],
+  food:[{t:"Pierwsze wyjście do <a class='lnk' href='"+MAP("7-Eleven Bangkok")+"' target='_blank' rel='noopener'>7-Eleven</a> — rozgrzane tosty z serem i lokalne napoje. Klasyczny tajski „starter pack”."}],
+  t19:[{t:"Rytuał 7-Eleven dla bliźniaków: tosty z serem (poproś o podgrzanie) + azjatyckie napoje gazowane. Najtańsze i najbardziej kultowe wejście w Tajlandię."}],
+  muay:[]
+},
+{
+  n:"03", date:"13.07", dow:"Pon", img:"Wat Arun, Temple of the Dawn.jpg",
+  backup:"<b>Koło ratunkowe:</b> jeśli świątynie wystarczą na dziś, zarwijcie wieczór nad rzeką w <a class='lnk' href='"+MAP("Asiatique The Riverfront Bangkok")+"' target='_blank' rel='noopener'>Asiatique The Riverfront</a> — darmowy prom z Saphan Taksin, neony, koło widokowe, jedzenie i sklepy w jednym miejscu.",
+  title:"Intensywny Bangkok", loc:["Bangkok"], free:["czesc","Wieczór wolny"],
+  teaser:"Uderzenie sensoryczne: złoto Pałacu Królewskiego, Chinatown, rejs po kanałach i nocne tuk-tuki.",
+  transit:"Cały dzień w Bangkoku · rano świątynie, popołudniu rejs po klongach rzeki Chao Phraya.",
+  program:"<strong>W programie:</strong> <a class='lnk' href='"+MAP("Wat Traimit Golden Buddha Bangkok")+"' target='_blank' rel='noopener'>Wat Traimit</a> (Złoty Budda), rynek kwiatowy w Chinatown, <a class='lnk' href='"+MAP("Grand Palace Bangkok")+"' target='_blank' rel='noopener'>Pałac Królewski</a> i <a class='lnk' href='"+MAP("Wat Phra Kaew Emerald Buddha Bangkok")+"' target='_blank' rel='noopener'>Wat Phra Kaew</a> (Szmaragdowy Budda), lunch w cenie, popołudniowy rejs łodzią po kanałach.",
+  see:[
+    {t:"<a class='lnk' href='"+MAP("Wat Arun Bangkok")+"' target='_blank' rel='noopener'>Wat Arun</a> (Świątynia Świtu) — wieczorny powrót promem za 5 THB pod podświetloną wieżę.", p:"wstęp ~100 THB"},
+    {t:"<a class='lnk' href='"+MAP("King Power Mahanakhon SkyWalk")+"' target='_blank' rel='noopener'>Mahanakhon SkyWalk</a> — szklany taras 314 m nad miastem.", p:"~1 000 THB"}
+  ],
+  food:[
+    {t:"<a class='lnk' href='"+MAP("Thipsamai Pad Thai Bangkok")+"' target='_blank' rel='noopener'>Thipsamai</a> — legendarny pad thai zawijany w jajko (ul. Maha Chai)."},
+    {t:"<a class='lnk' href='"+MAP("Yaowarat Chinatown street food Bangkok")+"' target='_blank' rel='noopener'>Yaowarat (Chinatown)</a> wieczorem — uliczny food crawl: owoce morza, mango sticky rice, makarony."},
+    {t:"<a class='lnk' href='"+MAP("Jay Fai Bangkok")+"' target='_blank' rel='noopener'>Jay Fai</a> — uliczna kuchnia z gwiazdką Michelin (omlet z krabem). Długie kolejki, ale legenda.", p:"premium"}
+  ],
+  t19:[
+    {t:"Zdjęcie na szklanej podłodze Mahanakhon, 300 m nad ulicami — gotowy materiał na social media."},
+    {t:"Nocny rajd tuk-tukami po starym mieście.", o:true, p:"2 200 THB/os · 8 800 THB/4"}
+  ],
+  muay:[{t:"<a class='lnk' href='"+MAP("Rajadamnern Stadium Bangkok")+"' target='_blank' rel='noopener'>Rajadamnern Stadium</a> — najstarszy i najbardziej prestiżowy stadion Muay Thai na świecie. Walki w wybrane wieczory; jeśli wyjdzie wolny wieczór, to obowiązkowy punkt dla Maksa."}],
+  dinner:[
+    {label:"Lokalnie i niedrogo", name:"Krua Apsorn", note:"kultowa kuchnia domowa w starym mieście, słynny krab w żółtym curry (zamknięte w niedziele)", url:MAP("Krua Apsorn Dinso Road Bangkok")},
+    {label:"Klasyk od 1957", name:"Methavalai Sorndaeng", note:"elegancki klasyk przy Pomniku Demokracji, gicz jagnięca massaman, muzyka na żywo", url:MAP("Methavalai Sorndaeng Bangkok")},
+    {label:"Widok na Wat Arun", name:"Supanniga Eating Room (Tha Tien)", note:"taras nad rzeką z widokiem na Wat Arun o zmierzchu — rezerwacja wskazana", url:MAP("Supanniga Eating Room Tha Tien Bangkok")}
+  ]
+},
+{
+  n:"04", date:"14.07", dow:"Wt", img:"Erawan waterfall.JPG",
+  backup:"<b>Koło ratunkowe:</b> wolny wieczór? Usiądźcie na pływającej tratwie-barze nad rzeką Kwai z zimnym drinkiem, a po zmroku przejdźcie się podświetlonym <a class='lnk' href='"+MAP("River Kwai Bridge Kanchanaburi")+"' target='_blank' rel='noopener'>mostem na rzece Kwai</a> — to kwintesencja Kanchanaburi.",
+  title:"Pływający targ, wodospady Erawan i Kanchanaburi", loc:["Damnoen Saduak","Erawan","Kanchanaburi"], free:["czesc","Wieczór wolny"],
+  teaser:"Z metropolii w dżunglę: owoce prosto z łodzi i turkusowe, 7-poziomowe wodospady.",
+  transit:"Wykwaterowanie rano · trasa Bangkok–Damnoen Saduak–Erawan–Kanchanaburi (~280 km).",
+  program:"<strong>W programie:</strong> <a class='lnk' href='"+MAP("Damnoen Saduak Floating Market")+"' target='_blank' rel='noopener'>pływający targ Damnoen Saduak</a>, <a class='lnk' href='"+MAP("Erawan National Park Thailand")+"' target='_blank' rel='noopener'>Park Narodowy Erawan</a> (trekking i kąpiel w wodospadach), kolacja i nocleg w Kanchanaburi w cenie. Spakuj buty do wody i szybkoschnący ręcznik.",
+  see:[{t:"<a class='lnk' href='"+MAP("Bridge on the River Kwai Kanchanaburi")+"' target='_blank' rel='noopener'>Most na rzece Kwai</a> — wieczorny spacer po podświetlonym moście po kolacji.", p:"bezpłatnie"}],
+  food:[{t:"<a class='lnk' href='"+MAP("Kanchanaburi night market riverside")+"' target='_blank' rel='noopener'>Nocny targ nad rzeką</a> w Kanchanaburi — grillowane krewetki rzeczne i tajskie przekąski."}],
+  t19:[{t:"Naturalne „rybne spa” na 2.–3. poziomie wodospadów Erawan — rybki Garra rufa bezboleśnie skubią stopy. Świetne na wideo."}],
+  muay:[],
+  dinner:[
+    {label:"Z widokiem na most", name:"Keeree Tara", note:"riverside w stylu Bali tuż przy moście na rzece Kwai, zachód słońca i muzyka na żywo — rezerwuj stolik nad wodą", url:MAP("Keeree Tara Riverside Kanchanaburi")},
+    {label:"Farm-to-table", name:"Blue Rice by Apple & Noi", note:"nad rzeką, własne zioła i warzywa, charakterystyczny niebieski ryż", url:MAP("Blue Rice by Apple and Noi Kanchanaburi")},
+    {label:"Roślinnie", name:"On's Thai-Issan", note:"kultowa wegańska kuchnia, ulubieniec backpackerów", url:MAP("On's Thai Issan Vegan Kanchanaburi")}
+  ]
+},
+{
+  n:"05", date:"15.07", dow:"Śr", img:"Buddha Head in Tree Roots, Wat Mahathat, Ayutthaya.jpg",
+  backup:"<b>Koło ratunkowe:</b> wieczór w Phitsanulok to spacer nad rzeką Nan i lokalny <a class='lnk' href='"+MAP("Phitsanulok night market")+"' target='_blank' rel='noopener'>targ nocny</a> — wypatrujcie słynnej „latającej” morning glory, którą kucharz przerzuca z woka prosto na talerz kelnera.",
+  title:"Ruiny Ayutthayi i podróż na północ", loc:["Ayutthaya","Phitsanulok"], free:["brak","Dzień w trasie"],
+  teaser:"Świat dawnych imperiów: ceglane ruiny zniszczonej stolicy Syjamu, potem długi przejazd na północ.",
+  transit:"Wykwaterowanie · długa trasa Kanchanaburi–Ayutthaya–Phitsanulok (~440 km, 5–6 h jazdy).",
+  program:"<strong>W programie:</strong> zwiedzanie <a class='lnk' href='"+MAP("Wat Mahathat Ayutthaya")+"' target='_blank' rel='noopener'>Wat Mahathat</a> w Ayutthayi — słynna głowa Buddy wrośnięta w korzenie drzewa banyan.",
+  see:[{t:"<a class='lnk' href='"+MAP("Wat Mahathat Ayutthaya Buddha head tree")+"' target='_blank' rel='noopener'>Głowa Buddy w korzeniach</a> — najbardziej ikoniczny kadr Ayutthayi. Do zdjęcia kucnij: głowa musi być niżej niż wizerunek Buddy."}],
+  food:[{t:"Ayutthaya słynie z <a class='lnk' href='"+MAP("roti sai mai Ayutthaya")+"' target='_blank' rel='noopener'>roti sai mai</a> (wata cukrowa w naleśniku) i boat noodles (kuay teow rua). Wieczorem <a class='lnk' href='"+MAP("Bang Ian Night Market Ayutthaya")+"' target='_blank' rel='noopener'>Bang Ian Night Market</a>."}],
+  t19:[{t:"Wyzwanie: znajdźcie głowę Buddy w korzeniach i zróbcie respektujące zdjęcie (głowa niżej niż Budda — lokalna zasada)."}],
+  muay:[]
+},
+{
+  n:"06", date:"16.07", dow:"Czw", img:"Sukhothai, Wat Mahathat, Thailand.jpg",
+  backup:"<b>Koło ratunkowe:</b> po długim przejeździe lekki wieczór — <a class='lnk' href='"+MAP("Chiang Rai Clock Tower")+"' target='_blank' rel='noopener'>Złota Wieża Zegarowa</a> w centrum Chiang Rai daje krótki pokaz świateł i dźwięku o 19:00, 20:00 i 21:00. Efektowne, za darmo, kilka kroków od Night Bazaru.",
+  title:"Kolebki kultury i Chiang Rai", loc:["Sukhothai","Chiang Rai"], free:["brak","Wieczór chill"],
+  teaser:"Podróż przez historię: ruiny z XIII w. w Sukhothai, a wieczorem górzysty Chiang Rai.",
+  transit:"Wykwaterowanie · trasa Phitsanulok–Sukhothai–Chiang Rai (~490 km).",
+  program:"<strong>W programie:</strong> <a class='lnk' href='"+MAP("Wat Phra Si Rattana Mahathat Phitsanulok")+"' target='_blank' rel='noopener'>Wat Mahathat w Phitsanulok</a> i <a class='lnk' href='"+MAP("Sukhothai Historical Park")+"' target='_blank' rel='noopener'>Park Historyczny Sukhothai</a> (kolebka tajskiej kultury, UNESCO). Lunch i kolacja w cenie. Nocleg poza miastem w Chiang Rai.",
+  see:[{t:"W Sukhothai zajrzyjcie do <a class='lnk' href='"+MAP("Wat Si Chum Sukhothai")+"' target='_blank' rel='noopener'>Wat Si Chum</a> — wielki Budda w wąskiej niszy. Park najlepiej zwiedzać rowerem."}],
+  food:[{t:"Phitsanulok słynie z <a class='lnk' href='"+MAP("phak bung loi fa Phitsanulok")+"' target='_blank' rel='noopener'>phak bung loi fah</a> („latająca” morning glory) i <a class='lnk' href='"+MAP("Phitsanulok night bazaar Nan river")+"' target='_blank' rel='noopener'>nocnego bazaru</a> nad rzeką Nan."}],
+  t19:[{t:"Po całym dniu w trasie — wieczorny reset w klimatyzowanym pokoju przy wspólnej rozgrywce na konsolach (Steam Deck / Legion Go 2)."}],
+  muay:[]
+},
+{
+  n:"07", date:"17.07", dow:"Pt", img:"Wat Rong Suea Ten (49724986806).jpg",
+  backup:"<b>Koło ratunkowe:</b> nie wiecie, gdzie być wieczorem? <a class='lnk' href='"+MAP("Chiang Rai Night Bazaar")+"' target='_blank' rel='noopener'>Chiang Rai Night Bazaar</a> to serce miasta po zmroku — food court, scena z muzyką i tańcem oraz stoiska z rękodziełem, wszystko blisko hoteli.",
+  title:"Złoty Trójkąt, Mekong i Chiang Rai", loc:["Złoty Trójkąt","Chiang Rai"], free:["czesc","Popołudnie fakultet"],
+  teaser:"Styk trzech granic — Tajlandia, Laos, Birma — rejs po Mekongu i najbardziej surrealistyczna sztuka sakralna.",
+  transit:"Plantacja herbaty Doi Mae Salong (degustacja) · Złoty Trójkąt · rejs szybką łodzią po Mekongu · lunch w cenie.",
+  program:"<strong>W programie:</strong> herbaciana plantacja <a class='lnk' href='"+MAP("Doi Mae Salong tea plantation")+"' target='_blank' rel='noopener'>Doi Mae Salong</a>, <a class='lnk' href='"+MAP("Golden Triangle Sop Ruak")+"' target='_blank' rel='noopener'>Złoty Trójkąt</a> i rejs motorówką po rzece Mekong.",
+  see:[
+    {t:"<a class='lnk' href='"+MAP("Golden Triangle Sop Ruak Thailand")+"' target='_blank' rel='noopener'>Złoty Trójkąt</a> — punkt styku Tajlandii, Laosu i Birmy nad Mekongiem."},
+    {t:"<a class='lnk' href='"+MAP("Wat Rong Suea Ten Blue Temple Chiang Rai")+"' target='_blank' rel='noopener'>Niebieska Świątynia</a> (Wat Rong Suea Ten) — szafirowo-złota, hipnotyzująca."}
+  ],
+  food:[{t:"<a class='lnk' href='"+MAP("Chiang Rai Night Bazaar food court")+"' target='_blank' rel='noopener'>Chiang Rai Night Bazaar</a> — food court z khao soi i sai ua (północna kiełbasa), muzyka na żywo."}],
+  t19:[{t:"<a class='lnk' href='"+MAP("Baan Dam Museum Black House Chiang Rai")+"' target='_blank' rel='noopener'>Czarny Dom</a> (Baan Dam) — mroczny, awangardowy kompleks z instalacjami z kości i skór. Totalnie przełamuje klasyczne zwiedzanie.", o:true, p:"fakultet: 1 200 THB/os · 4 800 THB/4"}],
+  muay:[],
+  dinner:[
+    {label:"Lokalsi i niedrogo", name:"Lu Lam", note:"30+ lat nad rzeką Kok, najbardziej oryginalny smak północy, tanio (uwaga: bywa ostro)", url:MAP("Lu Lam restaurant Chiang Rai")},
+    {label:"Klasyk północy", name:"Phu Lae", note:"typowa kuchnia północna — gaeng hang lay, kiełbaski sai ua, ok. 300 THB/os", url:MAP("Phu Lae restaurant Chiang Rai")},
+    {label:"Klimat nad rzeką", name:"Chivit Thamma Da", note:"kolonialny dom nad Kok River blisko Niebieskiej Świątyni, kuchnia północna i europejska, świetne desery", url:MAP("Chivit Thamma Da Coffee House Chiang Rai")}
+  ]
+},
+{
+  n:"08", date:"18.07", dow:"Sob", img:"Wat Rong Khun (49713260738).jpg",
+  backup:"<b>Koło ratunkowe:</b> wolny wieczór w Chiang Mai? <a class='lnk' href='"+MAP("North Gate Jazz Co-Op Chiang Mai")+"' target='_blank' rel='noopener'>North Gate Jazz Co-Op</a> przy północnej bramie starówki gra jazz na żywo — kultowo, klimatycznie i bez biletu (przyjdźcie wcześniej, robi się tłoczno).",
+  title:"Biała Świątynia, rzemiosło i Chiang Mai", loc:["Chiang Rai","Chiang Mai"], free:["czesc","Wieczór wolny"],
+  teaser:"Architektoniczny cud wyklejany lustrami, masaż tajski i nocny targ w sercu starego miasta.",
+  transit:"Wykwaterowanie · górski odcinek Chiang Rai–Chiang Mai (~230 km).",
+  program:"<strong>W programie:</strong> <a class='lnk' href='"+MAP("Wat Rong Khun White Temple Chiang Rai")+"' target='_blank' rel='noopener'>Biała Świątynia (Wat Rong Khun)</a>, wioska rzemieślnicza <a class='lnk' href='"+MAP("San Kamphaeng handicraft village Chiang Mai")+"' target='_blank' rel='noopener'>San Kamphaeng</a>, obiad w cenie i 1,5-godzinny tradycyjny masaż tajski.",
+  see:[
+    {t:"<a class='lnk' href='"+MAP("Wat Chedi Luang Chiang Mai")+"' target='_blank' rel='noopener'>Wat Chedi Luang</a> — monumentalna ceglana stupa z rzeźbionymi słoniami.", p:"~50 THB"},
+    {t:"<a class='lnk' href='"+MAP("Saturday Night Market Wualai Road Chiang Mai")+"' target='_blank' rel='noopener'>Saturday Walking Street</a> (Wualai Road) — sobotni targ z najlepszym street foodem i muzyką."}
+  ],
+  food:[
+    {t:"<a class='lnk' href='"+MAP("Khao Soi Mae Sai Chiang Mai")+"' target='_blank' rel='noopener'>Khao Soi</a> — kultowy północny makaron w curry. Obowiązkowa pozycja w Chiang Mai."},
+    {t:"<a class='lnk' href='"+MAP("Cowboy Hat Lady Khao Kha Moo Chang Phueak Chiang Mai")+"' target='_blank' rel='noopener'>Cowboy Hat Lady</a> (Chang Phueak Gate) — słynna duszona wieprzowina khao kha moo."}
+  ],
+  t19:[{t:"Wolna ręka i budżet na sobotnim targu — lody kokosowe w łupinie, miniaturowe słodkie ananasy, lokalne smaki na własną rękę."}],
+  muay:[{t:"<a class='lnk' href='"+MAP("Thapae Boxing Stadium Chiang Mai")+"' target='_blank' rel='noopener'>Thaphae Boxing Stadium</a> — tuż przy zabytkowej bramie starego miasta, tradycyjne wieczorne walki Muay Thai."}],
+  dinner:[
+    {label:"Klasyk starego miasta", name:"Huen Phen", note:"40+ lat przy Ratchamanka Rd, klimatyczna sala wieczorem, znakomite khao soi", url:MAP("Huen Phen Chiang Mai")},
+    {label:"Lanna w Nimman", name:"Tong Tem Toh", note:"stary teakowy dom, ulubieniec młodych lokalsów, półmisek północny i grill — przyjdźcie wcześnie", url:MAP("Tong Tem Toh Chiang Mai")},
+    {label:"Drewniana willa z ogrodem", name:"Huen Muan Jai", note:"tradycyjna kuchnia Lanna, półmisek khantoke, klimat na okazję (zamknięte w środy)", url:MAP("Huen Muan Jai Chiang Mai")}
+  ]
+},
+{
+  n:"09", date:"19.07", dow:"Niedz", img:"Mahout Elephant Nature Park.JPG",
+  backup:"<b>Koło ratunkowe:</b> leniwy dzień bez fakultetu? <a class='lnk' href='"+MAP("One Nimman Chiang Mai")+"' target='_blank' rel='noopener'>One Nimman</a> — modny kwartał z kawiarniami, sklepami, muralami i wieczornym food marketem. Idealny na chłodną kawę, zakupy i obserwowanie ludzi.",
+  title:"Dzień wolny w Chiang Mai", loc:["Chiang Mai"], free:["pelny","Dzień wolny / fakultety"],
+  teaser:"Wasz dzień: leniwy Chiang Mai albo spotkanie oko w oko ze słoniami w etycznym rezerwacie w górach.",
+  transit:"Dzień do dyspozycji — własne plany lub jedna z wycieczek opcjonalnych (obie z lunchem).",
+  program:"<strong>Opcje fakultatywne:</strong> (1) <a class='lnk' href='"+MAP("ethical elephant sanctuary Chiang Mai")+"' target='_blank' rel='noopener'>Etyczne sanktuarium słoni</a> — karmienie z ręki, wspólny spacer i kąpiel w rzece, bez jazdy i tresury. (2) <a class='lnk' href='"+MAP("Doi Inthanon National Park")+"' target='_blank' rel='noopener'>Park Narodowy Doi Inthanon</a> — najwyższy szczyt kraju (2565 m), las mglisty, wymagana ciepła odzież.",
+  see:[
+    {t:"<a class='lnk' href='"+MAP("Sunday Walking Street Ratchadamnoen Chiang Mai")+"' target='_blank' rel='noopener'>Sunday Walking Street</a> (Ratchadamnoen) — ogromny niedzielny targ jedzenia i rękodzieła."},
+    {t:"<a class='lnk' href='"+MAP("Art in Paradise Chiang Mai")+"' target='_blank' rel='noopener'>Art in Paradise</a> — muzeum iluzji 3D na wypadek deszczu, świetne na zabawne zdjęcia.", p:"~400 THB"}
+  ],
+  food:[{t:"Niedzielny <a class='lnk' href='"+MAP("Sunday Walking Street food Chiang Mai")+"' target='_blank' rel='noopener'>targ na Ratchadamnoen</a> to street-foodowy raj — khao soi, sai ua, owoce, desery kokosowe."}],
+  t19:[{t:"Opcja słoniowa: wejście do rzeki i spłukiwanie błota ze słoni wiadrami — interaktywna petarda i kapitalne nagrania.", o:true, p:"słonie: 3 200 THB/os · Doi Inthanon: 2 700 THB/os"}],
+  muay:[{t:"Dzień wolny = okazja na <a class='lnk' href='"+MAP("Muay Thai gym training Chiang Mai")+"' target='_blank' rel='noopener'>trening próbny Muay Thai</a> dla Maksa — Chiang Mai ma sporo szkół przyjmujących na pojedyncze sesje."}]
+},
+{
+  n:"10", date:"20.07", dow:"Pon", img:"Phra That Doi Suthep Chiang Mai.jpg",
+  backup:"<b>Koło ratunkowe:</b> wolne popołudnie przed nocnym pociągiem? <a class='lnk' href='"+MAP("Warorot Market Chiang Mai")+"' target='_blank' rel='noopener'>Warorot Market (Kad Luang)</a> — lokalny targ na przekąski na drogę, owoce, słodycze i tanie pamiątki. Zróbcie zapasy przed 14-godzinną podróżą.",
+  title:"Doi Suthep i nocny pociąg sypialny", loc:["Doi Suthep","Pociąg → Bangkok"], free:["czesc","Południe wolne"],
+  teaser:"Święta góra z najpiękniejszą panoramą północy, a wieczorem kultowa podróż nocnym pociągiem.",
+  transit:"Wykwaterowanie · wieczorem transfer na dworzec i <b>nocny pociąg sypialny</b> do Bangkoku (~750 km) · suchy prowiant w cenie.",
+  program:"<strong>W programie:</strong> <a class='lnk' href='"+MAP("Wat Phra That Doi Suthep Chiang Mai")+"' target='_blank' rel='noopener'>Wat Phra That Doi Suthep</a> — złota świątynia na szczycie z widokiem na całe Chiang Mai. Po południu czas wolny na zakupy.",
+  see:[{t:"<a class='lnk' href='"+MAP("Wat Phra That Doi Suthep Chiang Mai")+"' target='_blank' rel='noopener'>Wat Phra That Doi Suthep</a> — 309 schodów wzdłuż balustrady Naga (lub kolejka) i panorama Chiang Mai."}],
+  food:[{t:"Zróbcie zapas przekąsek w <a class='lnk' href='"+MAP("7-Eleven Chiang Mai Railway Station")+"' target='_blank' rel='noopener'>7-Eleven</a> przed wejściem na peron — klasyka przed nocnym pociągiem."}],
+  t19:[{t:"Patrzcie, jak steward w kilkanaście sekund zamienia fotele w pościelone łóżka piętrowe z kotarami — backpackerski klasyk Azji."}],
+  muay:[]
+},
+{
+  n:"11", date:"21.07", dow:"Wt", img:"Pattaya beach from view point.jpg",
+  backup:"<b>Koło ratunkowe:</b> pierwsze popołudnie w Pattaya? <a class='lnk' href='"+MAP("Jomtien Beach Pattaya")+"' target='_blank' rel='noopener'>Plaża Jomtien</a> jest spokojniejsza i czystsza niż zatłoczona Beach Road — leżaki, parasole i owoce morza prosto z grilla.",
+  title:"Powrót do Bangkoku i transfer do Pattaya", loc:["Bangkok","Pattaya"], free:["pelny","Popołudnie wolne"],
+  teaser:"Budzimy się w pociągu i ruszamy nad morze — meldunek w tropikalnym resorcie i początek wypoczynku.",
+  transit:"Poranny przyjazd pociągu do Bangkoku · śniadanie · transfer autokarem do Pattaya (~180 km).",
+  program:"<strong>Zakwaterowanie:</strong> <a class='lnk' href='"+MAP("Siam Bayshore Resort Pattaya")+"' target='_blank' rel='noopener'>Siam Bayshore Resort Pattaya</a>, pokoje Tropical Deluxe (ocena Rainbow 4 „słoneczka”). Czas wolny na baseny i plażę.",
+  see:[{t:"<a class='lnk' href='"+MAP("Pattaya Viewpoint Phra Tamnak")+"' target='_blank' rel='noopener'>Pattaya Viewpoint</a> (wzgórze Phra Tamnak) — pocztówkowa panorama całej zatoki."}],
+  food:[{t:"Lokalna kawiarnia na <a class='lnk' href='"+MAP("Cha Yen Thai iced milk tea Pattaya")+"' target='_blank' rel='noopener'>Cha Yen</a> — mrożoną tajską herbatę mleczną z tapioką. Słodkie orzeźwienie po pociągu."}],
+  t19:[{t:"Cha Yen z kulkami tapioki — idealny młodzieżowy reset po nocnej podróży."}],
+  muay:[]
+},
+{
+  n:"12–14", date:"22–24.07", dow:"Śr–Pt", img:"Sanctuary of Truth Pattaya.jpg",
+  backup:"<b>Koło ratunkowe:</b> upał albo deszcz i nie wiecie, co robić? <a class='lnk' href='"+MAP("Terminal 21 Pattaya")+"' target='_blank' rel='noopener'>Terminal 21 Pattaya</a> — klimatyzowane centrum z motywami miast świata (każde piętro inne), tanie piętro z jedzeniem i mnóstwo miejsc na zdjęcia. Ratunek na każdą pogodę.",
+  title:"Pobyt i wypoczynek w Pattaya", loc:["Pattaya","Koh Lan"], free:["pelny","Dni wolne"],
+  teaser:"Rajskie wyspy, drewniane sanktuarium bez gwoździ, gale sportowe i neonowe nocne życie kurortu.",
+  transit:"Trzy doby w Siam Bayshore · baseny, plaża i fakultety biura do wyboru.",
+  program:"<strong>Fakultety biura:</strong> wycieczka na rajską wyspę <a class='lnk' href='"+MAP("Koh Lan island Pattaya")+"' target='_blank' rel='noopener'>Koh Lan</a> (całodniowy relaks na białych plażach) oraz słynna rewia <a class='lnk' href='"+MAP("Alcazar Show Pattaya")+"' target='_blank' rel='noopener'>Alcazar Show</a> (widowisko taneczno-muzyczne).",
+  see:[
+    {t:"<a class='lnk' href='"+MAP("Sanctuary of Truth Pattaya")+"' target='_blank' rel='noopener'>Sanctuary of Truth</a> — 105-metrowa budowla w całości z rzeźbionego drewna, bez gwoździ.", p:"~500 THB"},
+    {t:"<a class='lnk' href='"+MAP("Koh Lan island Pattaya")+"' target='_blank' rel='noopener'>Koh Lan</a> — białe plaże 45 min promem od Pattaya."}
+  ],
+  food:[
+    {t:"<a class='lnk' href='"+MAP("Lan Po Naklua seafood Pattaya")+"' target='_blank' rel='noopener'>Lan Po (Naklua)</a> — lokalny targ z owocami morza, dużo taniej niż na Beach Road."},
+    {t:"<a class='lnk' href='"+MAP("Thepprasit Night Market Pattaya")+"' target='_blank' rel='noopener'>Thepprasit Night Market</a> (weekend) — ogromny targ street foodu i nie tylko."}
+  ],
+  t19:[
+    {t:"Wieczorny spacer przez <a class='lnk' href='"+MAP("Walking Street Pattaya")+"' target='_blank' rel='noopener'>Walking Street</a> (hotel leży na jej końcu) — jaskrawe neony jako ciekawostka socjologiczna."},
+    {t:"Na plażach Koh Lan wieczorami pokazy żonglowania ogniem nad brzegiem morza."}
+  ],
+  muay:[{t:"<a class='lnk' href='"+MAP("Max Muay Thai Stadium Pattaya")+"' target='_blank' rel='noopener'>Max Muay Thai Stadium</a> — nowoczesny stadion na wybrzeżu, bardzo dynamiczne walki z międzynarodową obsadą i telewizyjną oprawą. Mocny punkt dla Maksa."}],
+  dinner:[
+    {label:"Owoce morza nad wodą", name:"Mum Aroi (Naklua)", note:"legendarny seafood na wodzie, świeży krab i krewetki, muzyka na żywo po zachodzie — przyjdźcie przed 18:00", url:MAP("Mum Aroi Naklua Pattaya")},
+    {label:"Klif i zachód słońca", name:"Rimpa Lapin", note:"restauracja na klifie nad zatoką Pattaya, klimat domku na drzewie, kuchnia tajsko-francuska", url:MAP("Rimpa Lapin Pattaya")},
+    {label:"Wiele kuchni, na okazję", name:"Mantra (Amari)", note:"7 otwartych kuchni — tajska, japońska, indyjska, włoska i grill; idealne dla różnych gustów (wieczorem dress code)", url:MAP("Mantra Restaurant Bar Amari Pattaya")}
+  ]
+},
+{
+  n:"15", date:"25.07", dow:"Sob", img:"Emirates Airbus A380 (seen from below).JPG",
+  backup:"<b>Koło ratunkowe:</b> krótka przesiadka w Dubaju (1h55) — od razu kierujcie się do bramki, a po drodze rzućcie okiem na Dubai Duty Free: perfumy, daktyle i elektronika bywają tańsze niż w mieście.",
+  title:"Powrót do Warszawy", loc:["Bangkok","Dubaj","WAW Warszawa"], free:["brak","Dzień powrotu"],
+  teaser:"Koniec wielkiej tajskiej przygody — wracamy na pokładzie Emirates prosto do Warszawy.",
+  transit:"<b>24.07 23:50</b> nocny transfer na lotnisko BKK.<br><b>02:50</b> wylot <b>EK377</b> (6 h 20) → Dubaj 06:00 · przesiadka 1 h 55.<br><b>07:55</b> wylot <b>EK179</b> → Warszawa <b>12:15</b>.",
+  program:"Lądowanie na Lotnisku Chopina, odbiór bagaży i powrót do domu (auto bezpiecznie zaparkowane w Warszawie).",
+  see:[], food:[],
+  t19:[{t:"Podczas niespełna 2-godzinnej przesiadki w Dubai Duty Free można potestować najnowsze słuchawki z ANC i nowinki — czas zleci szybciej."}],
+  muay:[]
+}
+];
+
+const SECMETA = {
+  backup:{label:"Koło ratunkowe", icon:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M5.6 5.6l3.2 3.2M15.2 15.2l3.2 3.2M18.4 5.6l-3.2 3.2M8.8 15.2l-3.2 3.2"/>'},
+  see:{label:"Must See", icon:'<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/>'},
+  food:{label:"Must Street Food", icon:'<path d="M3 11h18a8 8 0 0 1-16 0z"/><path d="M7 11V8M12 11V7M17 11V8"/><path d="M4 20h16"/>'},
+  t19:{label:"Must 19", icon:'<path d="M13 2 3 14h7l-1 8 10-12h-7z"/>'},
+  muay:{label:"Muay Thai", icon:'<path d="M5 11V8a3 3 0 0 1 6 0M11 11V6a2 2 0 0 1 4 0v5"/><path d="M15 9a2 2 0 0 1 4 0v5a7 7 0 0 1-7 7H9a6 6 0 0 1-6-6v-2a2 2 0 0 1 4 0"/>'},
+  dinner:{label:"Kolacja · 3 opcje", icon:'<path d="M6 3v8a2 2 0 0 0 2 2M8 3v18M6 3v4M10 3v4M8 7v0M16 3c-1.5 0-2.5 2-2.5 4.5S15 12 16 12v9"/>'}
+};
+const FREELBL = {pelny:"Czas wolny", czesc:"Czas wolny", brak:"Czas wolny"};
+
+// build route strip
+document.getElementById('route').innerHTML = ROUTE.map((s,i)=>{
+  const cls = KEY.has(s) ? 'stop key' : 'stop';
+  const arrow = i < ROUTE.length-1 ? '<span class="arr">→</span>' : '';
+  return `<span class="${cls}">${s}</span>${arrow}`;
+}).join('');
+
+// render days
+function secHTML(key, items){
+  if(!items || !items.length) return '';
+  const m = SECMETA[key];
+  const lis = items.map(it=>{
+    const opt = it.o ? '<span class="opt">fakultet</span>' : '';
+    const price = it.p ? ` <span class="price">· ${it.p}</span>` : '';
+    return `<li><span>${it.t}${opt}${price}</span></li>`;
+  }).join('');
+  return `<div class="sec sec--${key}" data-sec="${key}">
+    <h4 class="sec__h"><svg viewBox="0 0 24 24">${m.icon}</svg>${m.label}</h4>
+    <ul>${lis}</ul></div>`;
+}
+
+function dinnerHTML(items){
+  if(!items || !items.length) return '';
+  const m = SECMETA.dinner;
+  const lis = items.map(it=>`<li><span><b class="dlabel">${it.label}</b> <a class='lnk' href='${it.url}' target='_blank' rel='noopener'>${it.name}</a> <span class="note">— ${it.note}</span></span></li>`).join('');
+  return `<div class="sec sec--dinner" data-sec="dinner">
+    <h4 class="sec__h"><svg viewBox="0 0 24 24">${m.icon}</svg>${m.label}</h4>
+    <ul>${lis}</ul></div>`;
+}
+
+function backupHTML(b){
+  if(!b) return '';
+  const m = SECMETA.backup;
+  return `<div class="sec sec--backup" data-sec="backup">
+    <h4 class="sec__h"><svg viewBox="0 0 24 24">${m.icon}</svg>${m.label}</h4>
+    <p class="backup-text">${b}</p></div>`;
+}
+
+const daysEl = document.getElementById('days');
+daysEl.innerHTML = DAYS.map(d=>{
+  const pins = d.loc.map(l=>`<span class="pin">${l}</span>`).join('');
+  const secs = backupHTML(d.backup) + ['see','food','t19','muay'].map(k=>secHTML(k, d[k])).join('') + dinnerHTML(d.dinner);
+  const has = ['see','food','t19','muay'].filter(k=>d[k] && d[k].length);
+  if(d.dinner && d.dinner.length) has.push('dinner');
+  if(d.backup) has.push('backup');
+  return `<article class="day" id="dzien-${d.n.replace(/[^0-9]/g,'')||d.n}" data-has="${has.join(' ')}">
+    <div class="day__media">
+      <span class="day__tag">DZIEŃ ${d.n} · ${d.date} · ${d.dow}</span>
+      <div class="day__loc">${pins}</div>
+      <img loading="lazy" alt="${d.title}" src="${IMG(d.img)}">
+    </div>
+    <div class="day__body">
+      <div class="day__head">
+        <h3 class="day__title">${d.title}</h3>
+        <span class="free ${d.free[0]}">${d.free[1]}</span>
+      </div>
+      <p class="teaser">${d.teaser}</p>
+      <div class="transit">${d.transit}</div>
+      <p class="program">${d.program}</p>
+      <div class="secs">${secs}</div>
+    </div>
+  </article>`;
+}).join('');
+
+// day selector
+const sel = document.getElementById('daysel');
+sel.innerHTML = '<option value="">Skok do dnia…</option>' +
+  DAYS.map(d=>`<option value="dzien-${d.n.replace(/[^0-9]/g,'')||d.n}">Dzień ${d.n} — ${d.title}</option>`).join('');
+sel.addEventListener('change',()=>{
+  const el = document.getElementById(sel.value);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+// filters
+const filterBtns = [...document.querySelectorAll('.filt')];
+const fnote = document.getElementById('fnote');
+const cards = [...document.querySelectorAll('.day')];
+let active = 'all';
+
+function applyFilter(f){
+  active = f;
+  filterBtns.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.f===f)));
+  let hidden = 0;
+  cards.forEach(card=>{
+    const has = (card.dataset.has||'').split(' ');
+    const secsInCard = [...card.querySelectorAll('.sec')];
+    if(f==='all'){
+      card.classList.remove('hide');
+      secsInCard.forEach(s=>s.classList.remove('hide'));
+    }else{
+      if(has.includes(f)){
+        card.classList.remove('hide');
+        secsInCard.forEach(s=>s.classList.toggle('hide', s.dataset.sec!==f));
+      }else{
+        card.classList.add('hide');
+        hidden++;
+      }
+    }
+  });
+  if(f==='all'){ fnote.classList.remove('on'); fnote.textContent=''; }
+  else{
+    const lbl = SECMETA[f].label;
+    fnote.classList.add('on');
+    fnote.textContent = `Filtr: ${lbl} — pokazano ${cards.length-hidden} z ${cards.length} dni`;
+  }
+}
+filterBtns.forEach(b=>b.addEventListener('click',()=>applyFilter(b.dataset.f)));
+applyFilter('all');
+</script>
+</body>
+</html>
