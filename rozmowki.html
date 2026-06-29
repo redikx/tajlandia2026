@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rozmówki PL → TH — Baśniowa Tajlandia 2026</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rozmówki polsko-tajskie — Baśniowa Tajlandia 2026">
+<meta property="og:description" content="Najprzydatniejsze zwroty turystyczne PL→TH z zapisem tajskim, wymową i odsłuchem.">
+<meta property="og:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Wat%20Rong%20Khun%20-%20Chiang%20Rai.jpg?width=1280">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="sub">
+  <div class="wrap">
+    <a class="sub__back" href="index.html">← Wróć do planu</a>
+    <span class="sub__kicker">Rozmówki · Polski → Tajski</span>
+    <h1>Najprzydatniejsze zwroty</h1>
+    <p class="sub__lead">Najczęściej używane zwroty turystyczne z zapisem tajskim i wymową po polsku. Kliknij tajski napis 🔊, aby usłyszeć go w Tłumaczu Google.</p>
+  </div>
+</header>
+
+<div class="sub__tipbar">
+  <div class="wrap">Klucz do uprzejmości: mężczyźni (Radek, Maks) kończą zdania <b>ครับ „khrap”</b>, kobiety (Beata, Roksana) <b>ค่ะ „khâ”</b>. Samo „khrap / khâ” znaczy też grzeczne „tak”.</div>
+</div>
+
+<main class="sub__main">
+  <div class="wrap">
+    <input id="phSearch" class="ph-search" type="search" placeholder="Szukaj zwrotu… (np. woda, taxi, ile)" aria-label="Szukaj zwrotu">
+    <div class="ph-body" id="phBody"></div>
+    <p id="phEmpty" class="ph-empty" hidden>Brak wyników dla tego hasła.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="mono">Rozmówki · Baśniowa Tajlandia 2026</div>
+  <p style="margin-top:10px">Wymowa orientacyjna — tajski jest tonalny. „Wai” (złożone dłonie) to miłe powitanie; nie dotykaj nikogo po głowie i nie wskazuj na nic stopami.</p>
+</footer>
+
+<script>
+const PHRASES = [
+  {g:"Podstawy i grzeczność", items:[
+    {pl:"Dzień dobry / Cześć / Do widzenia", th:"สวัสดี ครับ/ค่ะ", say:"sa-łat-dii khrap/kha"},
+    {pl:"Dziękuję", th:"ขอบคุณ ครับ/ค่ะ", say:"khop-khun khrap/kha"},
+    {pl:"Tak", th:"ใช่", say:"czaj"},
+    {pl:"Nie", th:"ไม่", say:"maj"},
+    {pl:"Poproszę…", th:"ขอ… หน่อย", say:"kho… noj"},
+    {pl:"Przepraszam", th:"ขอโทษ ครับ/ค่ะ", say:"kho-thoot khrap/kha"},
+    {pl:"Nic nie szkodzi / Spoko", th:"ไม่เป็นไร", say:"maj pen raj"},
+    {pl:"Czy mówisz po angielsku?", th:"พูดภาษาอังกฤษได้ไหม", say:"puut pha-saa ang-krit daj maj"},
+    {pl:"Nie rozumiem", th:"ไม่เข้าใจ", say:"maj khao dżaj"}
+  ]},
+  {g:"W restauracji", items:[
+    {pl:"Poproszę menu", th:"ขอเมนูหน่อย", say:"kho me-nuu noj"},
+    {pl:"Nie ostre", th:"ไม่เผ็ด", say:"maj pet"},
+    {pl:"Trochę ostre", th:"เผ็ดนิดหน่อย", say:"pet nit-noj"},
+    {pl:"Pyszne!", th:"อร่อย", say:"a-roj"},
+    {pl:"Woda (butelkowana)", th:"น้ำเปล่า", say:"nam plao"},
+    {pl:"Bez lodu", th:"ไม่ใส่น้ำแข็ง", say:"maj saj nam-khaeng"},
+    {pl:"Jem jarsko (wegetariańsko)", th:"กินเจ ครับ/ค่ะ", say:"gin dżee khrap/kha"},
+    {pl:"Bez sosu rybnego", th:"ไม่ใส่น้ำปลา", say:"maj saj nam-plaa"},
+    {pl:"Poproszę rachunek", th:"เช็คบิล / ขอบิลหน่อย", say:"czek bin / kho bin noj"}
+  ]},
+  {g:"Targ i zakupy", items:[
+    {pl:"Ile to kosztuje?", th:"เท่าไหร่", say:"thao-raj"},
+    {pl:"Za drogo", th:"แพงไป", say:"paeng paj"},
+    {pl:"Może taniej?", th:"ลดได้ไหม", say:"lot daj maj"},
+    {pl:"Wezmę to", th:"เอาอันนี้", say:"ao an-nii"},
+    {pl:"Nie, dziękuję", th:"ไม่เอา ขอบคุณ", say:"maj ao, khop-khun"}
+  ]},
+  {g:"W drodze", items:[
+    {pl:"Gdzie jest…?", th:"…อยู่ที่ไหน", say:"…juu thii-naj"},
+    {pl:"Gdzie jest toaleta?", th:"ห้องน้ำอยู่ที่ไหน", say:"hong-nam juu thii-naj"},
+    {pl:"Zatrzymaj się tutaj", th:"จอดตรงนี้", say:"dżot trong-nii"},
+    {pl:"Proszę włączyć taksometr", th:"เปิดมิเตอร์ด้วย", say:"pəət mi-təə duaj"},
+    {pl:"W lewo / W prawo / Prosto", th:"เลี้ยวซ้าย / เลี้ยวขวา / ตรงไป", say:"liao saaj / liao khwaa / trong paj"},
+    {pl:"Lotnisko / Hotel", th:"สนามบิน / โรงแรม", say:"sa-naam-bin / roong-raem"}
+  ]},
+  {g:"Liczby", items:[
+    {pl:"1 · 2 · 3 · 4 · 5", th:"หนึ่ง สอง สาม สี่ ห้า", say:"nyng · song · saam · sii · haa"},
+    {pl:"6 · 7 · 8 · 9 · 10", th:"หก เจ็ด แปด เก้า สิบ", say:"hok · dżet · paet · kao · sip"},
+    {pl:"20 · 100 · 1000", th:"ยี่สิบ / ร้อย / พัน", say:"jii-sip · roj · pan"}
+  ]},
+  {g:"Awaryjne i zdrowie", items:[
+    {pl:"Pomocy!", th:"ช่วยด้วย", say:"czuaj duaj"},
+    {pl:"Potrzebuję lekarza", th:"หาหมอหน่อย", say:"haa moo noj"},
+    {pl:"Szpital / Apteka", th:"โรงพยาบาล / ร้านขายยา", say:"roong-pa-jaa-baan / raan-khaaj-jaa"},
+    {pl:"Policja", th:"ตำรวจ", say:"tam-ruat"},
+    {pl:"Zgubiłem się", th:"หลงทาง", say:"long thaang"},
+    {pl:"Boli mnie tutaj", th:"เจ็บตรงนี้", say:"dżep trong-nii"}
+  ]}
+];
+function renderPhrases(){
+  const el = document.getElementById('phBody');
+  el.innerHTML = PHRASES.map(grp=>{
+    const rows = grp.items.map(it=>{
+      const url = 'https://translate.google.com/?sl=th&tl=pl&op=translate&text='+encodeURIComponent(it.th);
+      return `<div class="ph-row"><div class="ph-pl">${it.pl}</div>`+
+        `<div class="ph-th"><a href="${url}" target="_blank" rel="noopener" title="Posłuchaj wymowy w Tłumaczu Google">${it.th} 🔊</a></div>`+
+        `<div class="ph-say">${it.say}</div></div>`;
+    }).join('');
+    return `<section class="ph-group"><h3>${grp.g}</h3>${rows}</section>`;
+  }).join('');
+}
+renderPhrases();
+
+const phSearch = document.getElementById('phSearch');
+const phEmpty = document.getElementById('phEmpty');
+phSearch.addEventListener('input', ()=>{
+  const q = phSearch.value.trim().toLowerCase();
+  let anyVisible = false;
+  document.querySelectorAll('.ph-group').forEach(g=>{
+    let groupVisible = false;
+    g.querySelectorAll('.ph-row').forEach(r=>{
+      const hit = !q || r.textContent.toLowerCase().includes(q);
+      r.style.display = hit ? '' : 'none';
+      if(hit) groupVisible = true;
+    });
+    g.style.display = groupVisible ? '' : 'none';
+    if(groupVisible) anyVisible = true;
+  });
+  phEmpty.hidden = anyVisible;
+});
+</script>
+</body>
+</html>

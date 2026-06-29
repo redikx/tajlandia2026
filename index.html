@@ -4,234 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Baśniowa Tajlandia 2026 — Plan wyprawy rodzinnej</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Baśniowa Tajlandia 2026 — Plan wyprawy rodzinnej">
+<meta property="og:description" content="Rodzinna wyprawa dzień po dniu: świątynie, dżungla, plaże Pattaya. Plan, jedzenie i rozmówki PL→TH.">
+<meta property="og:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Wat%20Rong%20Khun%20-%20Chiang%20Rai.jpg?width=1280">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --jade-900:#0c2e2a;
-    --jade-800:#103e38;
-    --jade-700:#155349;
-    --jade-600:#1d6b5d;
-    --gold:#e7b53c;
-    --gold-soft:#f2cf73;
-    --coral:#e8553a;
-    --coral-deep:#c8412c;
-    --paper:#f7f2e9;
-    --paper-2:#efe7d8;
-    --ink:#19211f;
-    --ink-soft:#4a534f;
-    --line:#d9cfbd;
-    --card:#fffdf8;
-    --shadow:0 1px 2px rgba(12,46,42,.06),0 12px 30px -18px rgba(12,46,42,.45);
-    --radius:18px;
-    --mono:'JetBrains Mono',ui-monospace,monospace;
-    --disp:'Space Grotesk',system-ui,sans-serif;
-    --body:'Inter',system-ui,sans-serif;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:var(--body);font-size:16px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{display:block;max-width:100%}
-  a{color:inherit}
-  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
-
-  /* ---------- COVER ---------- */
-  .cover{position:relative;min-height:92vh;display:flex;align-items:flex-end;
-    color:#fff;overflow:hidden;background:var(--jade-900)}
-  .cover__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    filter:saturate(1.05);opacity:.9}
-  .cover__veil{position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(10,38,34,.35) 0%,rgba(10,38,34,.25) 40%,rgba(10,30,27,.92) 100%)}
-  .cover__inner{position:relative;width:100%;max-width:1060px;margin:0 auto;
-    padding:0 20px 56px}
-  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.32em;
-    text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px;
-    display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-  .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
-  .cover h1{font-family:var(--disp);font-weight:700;letter-spacing:-.02em;
-    line-height:.96;margin:0;font-size:clamp(46px,9vw,104px)}
-  .cover h1 em{font-style:normal;display:block;
-    background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 55%,#fff5dc 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent}
-  .cover__sub{margin:20px 0 0;font-size:clamp(16px,2.2vw,20px);max-width:46ch;
-    color:rgba(255,255,255,.86)}
-  .ticket{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
-  .ticket .chip{font-family:var(--mono);font-size:12px;letter-spacing:.05em;
-    background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);
-    padding:9px 13px;border-radius:999px;backdrop-filter:blur(6px);
-    display:flex;gap:8px;align-items:center}
-  .ticket .chip b{color:var(--gold-soft);font-weight:700}
-  .scrollcue{position:absolute;right:20px;bottom:26px;font-family:var(--mono);
-    font-size:11px;letter-spacing:.25em;color:rgba(255,255,255,.7);
-    writing-mode:vertical-rl;text-transform:uppercase}
-
-  /* ---------- ROUTE STRIP ---------- */
-  .route{background:var(--jade-900);color:#fff;padding:34px 0;border-top:1px solid rgba(255,255,255,.08)}
-  .route h2{font-family:var(--mono);font-size:12px;letter-spacing:.28em;
-    text-transform:uppercase;color:var(--gold-soft);margin:0 0 18px;font-weight:500}
-  .route__line{display:flex;flex-wrap:wrap;gap:8px 4px;align-items:center}
-  .stop{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;
-    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
-    padding:6px 11px;border-radius:8px;white-space:nowrap}
-  .stop.key{background:var(--gold);color:var(--jade-900);border-color:var(--gold);font-weight:700}
-  .arr{color:rgba(231,181,60,.65);font-family:var(--mono);font-size:13px}
-
-  /* ---------- STICKY NAV ---------- */
-  .nav{position:sticky;top:0;z-index:50;background:rgba(247,242,233,.92);
-    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav__inner{display:flex;align-items:center;gap:14px;padding:11px 20px;
-    max-width:1060px;margin:0 auto;flex-wrap:wrap}
-  .nav__brand{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:-.01em;
-    color:var(--jade-800);margin-right:2px;white-space:nowrap}
-  .filters{display:flex;gap:7px;flex-wrap:wrap;flex:1}
-  .filt{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;cursor:pointer;
-    border:1px solid var(--line);background:var(--card);color:var(--ink-soft);
-    padding:7px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;
-    transition:all .15s ease;text-transform:uppercase}
-  .filt:hover{border-color:var(--jade-600);color:var(--jade-700)}
-  .filt[aria-pressed="true"]{background:var(--jade-800);color:#fff;border-color:var(--jade-800)}
-  .filt[aria-pressed="true"] svg{stroke:var(--gold-soft)}
-  .filt svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.7}
-  .filt.all[aria-pressed="true"]{background:var(--gold);color:var(--jade-900);border-color:var(--gold)}
-  .daysel{font-family:var(--mono);font-size:12px;border:1px solid var(--line);
-    border-radius:8px;padding:7px 8px;background:var(--card);color:var(--ink);cursor:pointer}
-  .filter-note{font-family:var(--mono);font-size:11px;color:var(--ink-soft);
-    width:100%;margin-top:2px;display:none}
-  .filter-note.on{display:block}
-
-  /* ---------- DAYS ---------- */
-  main{padding:42px 0 10px}
-  .day{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);overflow:hidden;margin-bottom:30px;scroll-margin-top:80px}
-  .day.hide{display:none}
-  .day__media{position:relative;aspect-ratio:21/9;background:var(--paper-2);overflow:hidden}
-  .day__media img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
-  .day:hover .day__media img{transform:scale(1.035)}
-  .day__media::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(12,46,42,0) 35%,rgba(12,46,42,.82) 100%)}
-  .day__tag{position:absolute;left:16px;top:16px;z-index:2;font-family:var(--mono);
-    font-size:11.5px;letter-spacing:.12em;color:var(--jade-900);background:var(--gold);
-    padding:6px 12px;border-radius:8px;font-weight:700}
-  .day__loc{position:absolute;left:16px;bottom:14px;right:16px;z-index:2;
-    display:flex;gap:7px;flex-wrap:wrap;align-items:flex-end}
-  .pin{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:#fff;
-    background:rgba(8,30,27,.55);border:1px solid rgba(255,255,255,.28);
-    padding:5px 10px;border-radius:7px;backdrop-filter:blur(4px)}
-  .day__body{padding:24px 26px 28px}
-  .day__head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;
-    flex-wrap:wrap;margin-bottom:6px}
-  .day__title{font-family:var(--disp);font-weight:700;font-size:clamp(22px,3.4vw,30px);
-    letter-spacing:-.015em;line-height:1.1;margin:0;color:var(--jade-800);max-width:24ch}
-  .free{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
-    padding:6px 11px;border-radius:999px;white-space:nowrap;border:1px solid;display:inline-flex;gap:7px;align-items:center}
-  .free::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
-  .free.pelny{color:#1d7a4f;border-color:#bfe3cf;background:#eef8f1}
-  .free.czesc{color:#a9701a;border-color:#ecd9ad;background:#faf2df}
-  .free.brak{color:#9a4a3a;border-color:#ecc8be;background:#fbeee9}
-  .teaser{font-size:15.5px;color:var(--ink-soft);margin:8px 0 18px;max-width:68ch}
-
-  .transit{font-family:var(--mono);font-size:12.5px;color:var(--jade-700);
-    background:var(--paper);border:1px dashed var(--line);border-radius:12px;
-    padding:13px 15px;margin-bottom:18px;line-height:1.85}
-  .transit b{color:var(--coral-deep)}
-  .program{margin:0 0 20px;font-size:15.5px}
-  .program strong{color:var(--jade-800)}
-
-  .secs{display:grid;gap:12px}
-  .sec--backup{background:#ecf5f1;border:1px solid #cfe6dd;border-radius:12px;padding:12px 14px}
-  .sec--backup .sec__h{color:#0c6b58;margin-bottom:7px} .sec--backup .sec__h svg{stroke:#13957c}
-  .backup-text{font-size:14px;line-height:1.6;color:var(--ink);margin:0}
-  .backup-text a.lnk{color:#0c6b58}
-  .sec{border:1px solid var(--line);border-radius:13px;padding:14px 16px;background:#fff;
-    transition:box-shadow .15s ease,border-color .15s ease}
-  .sec.hide{display:none}
-  .sec__h{display:flex;align-items:center;gap:9px;font-family:var(--mono);
-    font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px;font-weight:700}
-  .sec__h svg{width:17px;height:17px;fill:none;stroke-width:1.7}
-  .sec--see .sec__h{color:var(--jade-700)} .sec--see .sec__h svg{stroke:var(--jade-600)}
-  .sec--food .sec__h{color:#b06a12} .sec--food .sec__h svg{stroke:#cf8a23}
-  .sec--t19 .sec__h{color:var(--coral-deep)} .sec--t19 .sec__h svg{stroke:var(--coral)}
-  .sec--muay .sec__h{color:#7a3b8c} .sec--muay .sec__h svg{stroke:#8e4aa1}
-  .sec--dinner .sec__h{color:#9c4a1e} .sec--dinner .sec__h svg{stroke:#c2622a}
-  .sec ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
-  .sec li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.5}
-  .sec li::before{content:"";flex:0 0 6px;width:6px;height:6px;border-radius:50%;
-    margin-top:8px;background:var(--line)}
-  .sec--see li::before{background:var(--jade-600)}
-  .sec--food li::before{background:#cf8a23}
-  .sec--t19 li::before{background:var(--coral)}
-  .sec--muay li::before{background:#8e4aa1}
-  .sec--dinner li::before{background:#c2622a}
-  .dlabel{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;
-    background:#f3e6d4;color:#8a4a1c;padding:2px 8px;border-radius:6px;margin-right:5px;white-space:nowrap}
-  .sec a.lnk{color:var(--jade-700);text-decoration:none;border-bottom:1.5px solid var(--line);
-    font-weight:600;transition:border-color .15s}
-  .sec a.lnk:hover{border-color:var(--jade-600)}
-  .sec .note{color:var(--ink-soft)}
-  .opt{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:#fff;
-    background:var(--coral);padding:2px 7px;border-radius:5px;margin-left:6px;
-    text-transform:uppercase;white-space:nowrap;vertical-align:middle}
-  .price{font-family:var(--mono);font-size:11px;color:var(--ink-soft);white-space:nowrap}
-
-  /* ---------- EMIRATES PANEL ---------- */
-  .ek{padding:6px 0 2px}
-  .ek__grid{background:var(--jade-800);color:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
-    display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);overflow:hidden}
-  .ek__media{margin:0;position:relative;min-height:250px}
-  .ek__media img{width:100%;height:100%;object-fit:cover;display:block}
-  .ek__media figcaption{position:absolute;left:0;right:0;bottom:0;font-family:var(--mono);font-size:10px;
-    letter-spacing:.04em;color:rgba(255,255,255,.85);padding:10px 12px;
-    background:linear-gradient(transparent,rgba(0,0,0,.6))}
-  .ek__body{padding:26px 28px}
-  .ek__tag{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--gold-soft);text-transform:uppercase}
-  .ek__body h2{font-family:var(--disp);font-size:23px;margin:9px 0 8px;color:#fff;line-height:1.15}
-  .ek__lead{font-size:14px;color:rgba(255,255,255,.85);line-height:1.55;margin:0 0 14px}
-  .ek__list{list-style:none;margin:0;padding:0;display:grid;gap:9px}
-  .ek__list li{font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.9);padding-left:18px;position:relative}
-  .ek__list li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:var(--gold-soft)}
-  .ek__list b{color:#fff}
-  .ek__tip{margin-top:16px;font-size:13px;line-height:1.55;color:#fff;
-    background:rgba(231,181,60,.12);border:1px solid rgba(231,181,60,.32);border-radius:10px;padding:11px 13px}
-  @media(max-width:760px){.ek__grid{grid-template-columns:1fr}.ek__media{min-height:200px}}
-
-  /* ---------- PATTAYA PLAYBOOK ---------- */
-  .pat{margin:30px 0 8px}
-  .pat__tag{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral)}
-  .pat__head h2{font-family:var(--disp);font-size:24px;margin:8px 0 6px;color:var(--jade-900)}
-  .pat__lead{font-size:14px;color:var(--ink-soft);line-height:1.55;margin:0;max-width:780px}
-  .pat__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;margin-top:18px}
-  .pat__cat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
-  .pat__cat h3{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--jade-700);margin:0 0 11px}
-  .pat__cat h3 svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
-  .pat__cat ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-  .pat__cat li{font-size:13.5px;line-height:1.5;color:var(--ink);padding-left:14px;position:relative}
-  .pat__cat li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--coral)}
-  .pat__cat .note{color:var(--ink-soft)}
-  .pat__cat .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;color:var(--jade-600);white-space:nowrap}
-
-  footer{text-align:center;padding:36px 20px 56px;color:var(--ink-soft);font-size:13px}
-  footer .mono{font-family:var(--mono);font-size:11px;letter-spacing:.1em;
-    text-transform:uppercase;color:var(--jade-700)}
-
-  :focus-visible{outline:2.5px solid var(--coral);outline-offset:2px;border-radius:4px}
-
-  @media (max-width:620px){
-    .day__media{aspect-ratio:16/10}
-    .day__body{padding:20px 18px 22px}
-    .nav__brand{display:none}
-    .cover__inner{padding-bottom:42px}
-  }
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .day:hover .day__media img{transform:none}
-    *{transition:none!important}
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -249,6 +29,10 @@
       <span class="chip">WAW ✈ BKK · <b>EMIRATES</b></span>
       <span class="chip">RADEK · BEATA · ROKSANA · MAKS</span>
     </div>
+    <a class="phrasebtn" href="rozmowki.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v14M2 5.5C2 5 2.4 4.6 3 4.6c3 0 6 .7 9 2.4 3-1.7 6-2.4 9-2.4.6 0 1 .4 1 .9V19c0 .5-.4.9-1 .9-3 0-6 .7-9 2.1-3-1.4-6-2.1-9-2.1-.6 0-1-.4-1-.9z"/></svg>
+      Rozmówki <b>PL → TH</b><span class="phrasebtn__go">↗</span>
+    </a>
   </div>
   <div class="scrollcue">przewiń ↓</div>
 </header>
@@ -376,6 +160,13 @@
   <div class="mono">Plan na podstawie programu Rainbow Tours · Rez. 8787523</div>
   <p style="margin-top:10px">Zdjęcia: Wikimedia Commons (licencje CC). Linki prowadzą do Map Google.<br>Sekcje <b>Must See · Street Food · Kolacja · Must 19 · Muay Thai</b> to nasze dodatki do programu biura.</p>
 </footer>
+
+<button class="cheatfab" id="cheatFab" type="button" aria-label="Ściąga: liczby i targ">💱 Targ</button>
+<div class="cheat" id="cheat" role="dialog" aria-label="Ściąga: liczby i targ">
+  <div class="cheat__top"><h3>Ściąga · Liczby &amp; Targ</h3><button class="cheat__x" id="cheatX" type="button" aria-label="Zamknij">✕</button></div>
+  <div class="cheat__body" id="cheatBody"></div>
+  <a class="cheat__more" href="rozmowki.html">Pełne rozmówki →</a>
+</div>
 
 <script>
 const IMG = f => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(f)}?width=1280`;
@@ -718,6 +509,46 @@ function applyFilter(f){
 }
 filterBtns.forEach(b=>b.addEventListener('click',()=>applyFilter(b.dataset.f)));
 applyFilter('all');
+
+/* ---------- PŁYWAJĄCA ŚCIĄGA: LICZBY & TARG ---------- */
+const CHEAT = {
+  "Liczby": [
+    {pl:"1 · 2 · 3 · 4 · 5", th:"หนึ่ง สอง สาม สี่ ห้า", say:"nyng · song · saam · sii · haa"},
+    {pl:"6 · 7 · 8 · 9 · 10", th:"หก เจ็ด แปด เก้า สิบ", say:"hok · dżet · paet · kao · sip"},
+    {pl:"20 · 100 · 1000", th:"ยี่สิบ / ร้อย / พัน", say:"jii-sip · roj · pan"}
+  ],
+  "Na targu": [
+    {pl:"Ile to kosztuje?", th:"เท่าไหร่", say:"thao-raj"},
+    {pl:"Za drogo", th:"แพงไป", say:"paeng paj"},
+    {pl:"Może taniej?", th:"ลดได้ไหม", say:"lot daj maj"},
+    {pl:"Wezmę to", th:"เอาอันนี้", say:"ao an-nii"},
+    {pl:"Nie, dziękuję", th:"ไม่เอา ขอบคุณ", say:"maj ao, khop-khun"}
+  ]
+};
+(function(){
+  const body = document.getElementById('cheatBody');
+  body.innerHTML = Object.keys(CHEAT).map(sec=>{
+    const rows = CHEAT[sec].map(it=>{
+      const url = 'https://translate.google.com/?sl=th&tl=pl&op=translate&text='+encodeURIComponent(it.th);
+      return `<div class="cheat__row"><div class="cheat__pl">${it.pl}</div>`+
+        `<div class="cheat__th"><a href="${url}" target="_blank" rel="noopener" title="Posłuchaj w Tłumaczu Google">${it.th} 🔊</a></div>`+
+        `<div class="cheat__say">${it.say}</div></div>`;
+    }).join('');
+    return `<div class="cheat__sec"><h4>${sec}</h4>${rows}</div>`;
+  }).join('');
+  const fab = document.getElementById('cheatFab');
+  const panel = document.getElementById('cheat');
+  fab.addEventListener('click', e=>{ e.stopPropagation(); panel.classList.toggle('open'); });
+  document.getElementById('cheatX').addEventListener('click', ()=>panel.classList.remove('open'));
+  document.addEventListener('click', e=>{
+    if(panel.classList.contains('open') && !panel.contains(e.target) && e.target!==fab) panel.classList.remove('open');
+  });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') panel.classList.remove('open'); });
+  const onScroll = ()=>fab.classList.toggle('show', window.scrollY>400);
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+
 </script>
 </body>
 </html>
